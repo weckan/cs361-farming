@@ -7,19 +7,24 @@
     /* test driver */
     require_once(dirname(__FILE__) . '/../simpletest/autorun.php');
 
-    /* file under test */
-    // require_once(dirname(__FILE__) . '/../file.php');
+    /* web page test driver */
+    require_once(dirname(__FILE__) . '/../simpletest/web_tester.php');
+    require_once(dirname(__FILE__) . '/../simpletest/reporter.php');
 
-    class TestDemo extends UnitTestCase{
+    class TestAvas extends WebTestCase{
 
         /* optional constructor to name the test */
 		function __construct() {
-			//parent::__construct('Testing...');
+			//parent::__construct('Testing ...');
 		}
 
         /* optional test setup */
 		function setUp() {
 			//set precondition
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/test/avas.php');
+			/* $this->showRequest(); */
+			/* $this->showHeaders(); */
+			/* $this->showSource(); */
 		}
 
         /* optional test clean up */
@@ -34,23 +39,17 @@
 
         /* one or more test functions - name must start with test */
 		function testSomething() {
-			//set up any needed variables
-            // $good = 'value';
-            // $bad = 'value2';
-
-			//make assertions
-			// $this->assertTrue(func_in_thing.php($good));
-			// $this->assertFalse(func_in_thing.php($bad));
-
-			//make more assertions - hardcoded here to demo reporting
-			$this->assertTrue(1);
-			$this->assertFalse(0);
-
+			$this->assertResponse(200);
+			$this->assertNoText('<table>');
+			$this->assertText('Plant Data');
+			$this->assertText('Plant ID');
+			$this->assertText('Plant Name');
+			$this->assertText('Sun level');
 		}
 
 	}
 
-$test = new TestDemo();
+$test = new TestAvas();
 $test->run(new HtmlReporter());
 
 ?>

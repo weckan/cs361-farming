@@ -11,7 +11,7 @@
     require_once(dirname(__FILE__) . '/../simpletest/web_tester.php');
     require_once(dirname(__FILE__) . '/../simpletest/reporter.php');
 
-    class TestWebPages extends WebTestCase{
+    class TestLocal extends WebTestCase{
 
         /* optional constructor to name the test */
 		function __construct() {
@@ -21,7 +21,7 @@
         /* optional test setup */
 		function setUp() {
 			//set precondition
-			$this->get('http://url');
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/test/local.php');
 			/* $this->showRequest(); */
 			/* $this->showHeaders(); */
 			/* $this->showSource(); */
@@ -39,17 +39,34 @@
 
         /* one or more test functions - name must start with test */
 		function testSomething() {
-            $this->assertTitle('title1');
-            $this->assertText('text');
-            $this->click('link-text');
-            $this->assertTitle('title2');
-            $this->assertText('text');
-            $this->back();
+			$this->assertResponse(200);
+			$this->assertNoText('<table>');
+			$this->assertText('Local Instructions');
+			$this->assertText('Plant Name');
+			$this->assertText('Water Amount');
+			$this->assertText('Sun Level');
+			$this->assertText('Sun Duration');
+			$this->assertText('Sun xDay');
+			$this->assertText('Sun xWeek');
+			$this->assertText('Food Type');
+			$this->assertText('Food Amount');
+			$this->assertText('Food xWeek');
+			$this->assertText('Food xMonth');
+			$this->assertText('Groom Type');
+			$this->assertText('Groom Detail');
+			$this->assertText('Groom xMonth');
+			$this->assertText('Organic Name');
+			$this->assertText('Organic Amount');
+			$this->assertText('Organic xWeek');
+			$this->assertText('Organic xMonth');
+			$this->assertText('Pesticide Type');
+			$this->assertText('Pesticide Amount');
+			$this->assertText('Pesticide xMonth');
 		}
 
 	}
 
-$test = new TestWebPages();
+$test = new TestLocal();
 $test->run(new HtmlReporter());
 
 ?>

@@ -10,11 +10,11 @@
     /* file under test */
     require_once(dirname(__FILE__) . '/../file.php');
 
-    class TestLogin extends UnitTestCase{
+    class TestPhpFile extends UnitTestCase{
 
         /* optional constructor to name the test */
 		function __construct() {
-			parent::__construct('Testing file.php');
+			//parent::__construct('Testing ...');
 		}
 
         /* optional test setup */
@@ -49,5 +49,8 @@
 		}
 
 	}
+
+$test = new TestPhpFile();
+$test->run(new HtmlReporter());
 
 ?>
