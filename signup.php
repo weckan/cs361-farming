@@ -13,7 +13,8 @@
     }
 
     require 'storedInfo.php';
-    $mysqli = new mysqli("oniddb.cws.oregonstate.edu","ratlifri-db",$myPassword,"ratlifri-db");
+    # $mysqli = new mysqli("oniddb.cws.oregonstate.edu","ratlifri-db",$myPassword,"ratlifri-db");
+    $mysqli = new mysqli("oniddb.cws.oregonstate.edu","petleya-db",$myPassword,"petleya-db");
     if ($mysqli->connect_errno) {
         # echo "MySQL connection failed: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
         myPrintError('s1-connection',$mysqli->connect_errno);
@@ -24,7 +25,8 @@
     $usr = strtolower($usr);
     $psw = strtolower($psw);
 
-    $sql = "SELECT DISTINCT `username` FROM `accounts` WHERE `username` = ?";
+    # $sql = "SELECT DISTINCT `username` FROM `accounts` WHERE `username` = ?";
+    $sql = "SELECT DISTINCT `username` FROM `zuser` WHERE `username` = ?";
 
     if(!($stmt = $mysqli->prepare($sql))) {
         # echo "Prepare failed: (" . $mysqli->errno. ") " . $mysqli->error;
@@ -58,7 +60,8 @@
 		die();
     }
 
-    $sql = "INSERT INTO `ratlifri-db`.`accounts` (`id`, `username`, `password`) 
+    # $sql = "INSERT INTO `ratlifri-db`.`accounts` (`id`, `username`, `password`) 
+    $sql = "INSERT INTO `petleya-db`.`zuser` (`uid`, `username`, `password`) 
             VALUES (NULL, '$usr', '$psw');";
 
     if(!($stmt = $mysqli->prepare($sql))) {

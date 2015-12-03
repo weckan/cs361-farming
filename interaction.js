@@ -63,18 +63,18 @@ function loadHome() {
         'http://web.engr.oregonstate.edu/~ratlifri/farming/index.html';
 }
 
-function loadPlantList(user) {
+function loadLocal(user) {
     var req = new XMLHttpRequest();
     if ( !req ) {
         throw 'Unable to create HttpRequest.';
     }
-    var url = 'http://web.engr.oregonstate.edu/~ratlifri/farming/loadPlantList.php';
+    var url = 'http://web.engr.oregonstate.edu/~ratlifri/farming/loadLocal.php';
     var parms = {
 	    usr: user
 	};
     req.onreadystatechange = function() {
         if ( this.readyState === 4 && this.status === 200 ) {
-            document.getElementById("plantlist").innerHTML = this.responseText;
+            document.getElementById("my-table").innerHTML = this.responseText;
         }
     }
     req.open('POST', url);

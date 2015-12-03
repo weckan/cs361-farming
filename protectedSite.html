@@ -41,11 +41,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Home Farming</a>
+          <a class="navbar-brand" href="http://web.engr.oregonstate.edu/~ratlifri/farming/index.html">Home Farming</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a data-toggle="modal" data-target="#myModal">Add</a></li>
             <li><a href="logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -59,16 +58,16 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button>
         <h2>Welcome!</h2>
-        <h3>Your farm is below. You can add or remove containers of plants any time.</h3>
+        <h3>An example farm is shown below, loaded from a local file.</h3>
         <p>(Dismiss this message using the X at the top right.)</p>
       </div>
 
-      <div class="page-header">
-        <h1>Containers and Plants</h1>
+      <div class="page-header" id="my-header">
+        <h1>Plants and Instructions</h1>
       </div>
       <div class="row">
         <div>
-          <table class="table table-striped" id="plantlist">
+          <table class="table table-striped" id="my-table">
             <thead>
               <tr>
                 <th>Empty!</th>
@@ -80,48 +79,9 @@
 
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Container</h4>
-      </div>
-      <div class="modal-body">
-		  <form class="form-horizontal">
-			<div class="form-group">
-			  <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-			  <div class="col-sm-10">
-				<input type="text" class="form-control" id="inputUsername" pattern="[\w\d]{1,20}" placeholder="alpha_numeric, 20 max" required>
-			  </div>
-			</div>
-			<div class="form-group">
-			  <label for="inputContainer" class="col-sm-2 control-label">Container</label>
-			  <div class="col-sm-10">
-				<input type="text" class="form-control" id="inputContainer" pattern="\d+" placeholder="whole number integer" required>
-			  </div>
-			</div>
-			<div class="form-group">
-			  <label for="inputPlant" class="col-sm-2 control-label">Plant</label>
-			  <div class="col-sm-10">
-				<input type="text" class="form-control" id="inputPlant" pattern="[\w\d]{1,20}" placeholder="alpha_numeric, 20 max" required>
-			  </div>
-			</div>
-			<div class="form-group">
-			  <div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-primary">Submit</button>
-				<button class="btn btn-default" data-dismiss="modal">Close</button>
-			  </div>
-			</div>
-		  </form>
-      </div>
-    </div>
-  </div>
-</div>
-
     <footer>
       <div class="container" id="resultFooter">
+        <p>by Andrew,Ava,Gerald,Richard,Robert,Susan on December 5, 2015</p>
       </div>
     </footer>
 
@@ -142,20 +102,9 @@
         }
         if ( is_valid() === true ) {
           var user = '<?php echo $_SESSION['usr'] ?>';
-          loadPlantList(user);
+          loadLocal(user);
         }
       }
     </script>
-	<script>
-      var form = document.querySelector("form");
-	  form.addEventListener("submit", function(event) {
-		  var u = '<?php echo $_SESSION['usr'] ?>';
-		  var e = form.elements.inputUsername.value;
-          var w = form.elements.inputContainer.value;
-          var p = form.elements.inputPlant.value;
-	      event.preventDefault();
-          add(u,e,w,p);
-	  });
-	</script>
   </body>
 </html>

@@ -10,8 +10,6 @@
     class AllTests extends TestSuite {
 
 		function __construct() {
-			$this->addFile('testDemo.php');
-			$this->addFile('testAvas.php');
 			$this->addFile('testFrontPages.php');
 			$this->addFile('testLocal.php');
 			$this->addFile('testDispense.php');

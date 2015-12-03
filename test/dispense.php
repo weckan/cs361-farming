@@ -31,29 +31,37 @@ for ($row=2; $row <= count($water); $row++ ) {
 	$D = 1;
 	$Y = 2016;
 	$now = mktime($h,$m,$s,$M,$D,$Y);
-	$q1 = mktime(0,0,0,3,31,2016);
+	$q1 = mktime(23,59,59,3,31,2016);
 	$xDay = $water[$row][2];
     $xWeek = $water[$row][3];
-	if ( $xDay > 0 ) { $hours = floor(24 / $xDay); } else { $hours = 1; }
-	if ( $xWeek > 0 ) { $days = floor( 7 / $xWeek); } else { $days = 1; }
+	$hours = floor( 24 / $xDay);
+	$days = floor( 7 / $xWeek);
+	echo "<tr>\n";
+	echo "<td>Plant&nbsp&nbsp&nbsp</td>\n";
+	echo "<td>Date/Time&nbsp&nbsp&nbsp</td>\n";
+	echo "<td>Amount&nbsp&nbsp&nbsp</td>\n";
+	echo "</tr>\n";
     while ( $now < $q1 ) {
 		while ( $xWeek > 0 ) {
 			while ( $xDay > 0 ) {
+				if ( $now > $q1 ) { break; }
 				echo "<tr>\n";
-				echo "<td>". $water[$row][0]. "</td>\n";
-				echo "<td>".date("Y-m-d H:i:s",$now)."</td>\n";
+				echo "<td>". $water[$row][0]. "&nbsp&nbsp&nbsp</td>\n";
+				echo "<td>".date("Y-m-d H:i:s",$now)."&nbsp&nbsp&nbsp</td>\n";
+				echo "<td>". $water[$row][1]. "&nbsp&nbsp&nbsp</td>\n";
 				echo "</tr>\n";
-				if ( $hours < 24 ) { $h = $h + $hours; }
+				$h = $h + $hours;
 				$now = mktime($h,$m,$s,$M,$D,$Y);
 				$xDay--;
 			}
 			$xDay = $water[$row][2];
-			if ( $days < 7 ) { $D = $D + $days; }
+			$D = $D + $days;
 			$now = mktime($h,$m,$s,$M,$D,$Y);
 			$xWeek--;
 		}
 		$xWeek = $water[$row][3];
 	}
+	echo "<tr><td><br></td></tr>\n";
 }
 echo "      </table>\n";
 ?>

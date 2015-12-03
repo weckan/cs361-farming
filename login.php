@@ -22,7 +22,8 @@
     #
 
     require 'storedInfo.php';
-    $mysqli = new mysqli("oniddb.cws.oregonstate.edu","ratlifri-db",$myPassword,"ratlifri-db");
+    # $mysqli = new mysqli("oniddb.cws.oregonstate.edu","ratlifri-db",$myPassword,"ratlifri-db");
+    $mysqli = new mysqli("oniddb.cws.oregonstate.edu","petleya-db",$myPassword,"petleya-db");
     if ($mysqli->connect_errno) {
         # echo "MySQL connection failed: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
         myPrintError('L1-connection',$mysqli->connect_errno);
@@ -39,7 +40,8 @@
     # But we will check for that again here.
     #
 
-    $sql = "SELECT `username` FROM `accounts` WHERE `username` = ?";
+    # $sql = "SELECT `username` FROM `accounts` WHERE `username` = ?";
+    $sql = "SELECT DISTINCT `username` FROM `zuser` WHERE `username` = ?";
 
     if(!($stmt = $mysqli->prepare($sql))) {
         # echo "Prepare failed: (" . $mysqli->errno. ") " . $mysqli->error;
@@ -88,7 +90,8 @@
     # Now check for username and password combination is correct.
     #
 
-    $sql = "SELECT * FROM `accounts` WHERE `username` = ? AND `password` = ?";
+    # $sql = "SELECT * FROM `accounts` WHERE `username` = ? AND `password` = ?";
+    $sql = "SELECT * FROM `zuser` WHERE `username` = ? AND `password` = ?";
 
     if(!($stmt = $mysqli->prepare($sql))) {
         # echo "Prepare failed: (" . $mysqli->errno. ") " . $mysqli->error;
