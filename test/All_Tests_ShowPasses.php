@@ -16,6 +16,7 @@
 			$this->addFile('testLocal.php');
 			$this->addFile('testDispense.php');
 			$this->addFile('testLighting.php');
+			$this->addFile('testNotify.php');
 		}
 
 	}
