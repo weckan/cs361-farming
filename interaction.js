@@ -81,6 +81,24 @@ function loadLocal(user) {
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     req.send( urlStringify(parms) );
 }
+function loadUserFarm(user) {
+    var req = new XMLHttpRequest();
+    if ( !req ) {
+        throw 'Unable to create HttpRequest.';
+    }
+    var url = 'http://web.engr.oregonstate.edu/~ratlifri/farming/loadUserFarm.php';
+    var parms = {
+	    usr: user
+	};
+    req.onreadystatechange = function() {
+        if ( this.readyState === 4 && this.status === 200 ) {
+            document.getElementById("my-table").innerHTML = this.responseText;
+        }
+    }
+    req.open('POST', url);
+	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    req.send( urlStringify(parms) );
+}
 
 function add(name,event,date,wish,price) {
     var req = new XMLHttpRequest();
