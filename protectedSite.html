@@ -117,6 +117,7 @@
     <script src="interaction.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Loads local csv data
     <script>
       window.onload = function() {
         function is_valid() {
@@ -126,6 +127,19 @@
         if ( is_valid() === true ) {
           var user = '<?php echo $_SESSION['usr'] ?>';
           loadLocal(user);
+        }
+      }
+    </script> -->
+    <!-- Loads user's farm from connected MySQL database-->
+     <script>
+      window.onload = function() {
+        function is_valid() {
+          var session = <?php echo $_SESSION['valid']?'true':'false'; ?>;
+          return(session);
+        }
+        if ( is_valid() === true ) {
+          var user = '<?php echo $_SESSION['usr'] ?>';
+          loadUserFarm(user);
         }
       }
     </script>
