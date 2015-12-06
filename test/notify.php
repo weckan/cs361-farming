@@ -21,7 +21,7 @@ error_reporting(E_ALL);
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: notifications@farming.com\n";
 
-    echo "<p>email sent to: $to</p>";
+    /* echo "<p>email sent to: $to</p>"; */
     echo "<p>subject: $subject</p>";
     echo "$txt";
 
