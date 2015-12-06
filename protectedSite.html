@@ -99,6 +99,8 @@
           </table>
         </div>
       </div>
+      <div id="addPlant-button">
+      </div>
 
     </div>
 
@@ -140,6 +142,7 @@
         if ( is_valid() === true ) {
           var user = '<?php echo $_SESSION['usr'] ?>';
           loadUserFarm(user);
+          addPlantButton(user);
         }
       }
     </script>
