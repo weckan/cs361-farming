@@ -65,6 +65,14 @@
             $this->assertTitle('CS 361: Software Engineering I, Fall 2015');
             $this->assertText('CS 361: Software Engineering I, Fall 2015');
             $this->back();
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/logout.php');
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/main.php');
+			$this->assertResponse(200);
+            $this->assertText('Error!');
+            $this->assertText('You do not have a valid session.');
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/protectedSite.html');
+			$this->assertResponse(403);
+            $this->assertText('Forbidden');
 		}
 
 	}
