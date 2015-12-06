@@ -1,6 +1,6 @@
 <?php
 
-require_once('../simpletest/reporter.php');
+require_once('simpletest/reporter.php');
 
 class ShowPasses extends HtmlReporter {
 

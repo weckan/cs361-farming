@@ -1,17 +1,18 @@
 <?php
 
+
     /* Turn on error reporting */
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
     /* test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/autorun.php');
+    require_once(dirname(__FILE__) . '/simpletest/autorun.php');
 
     /* web page test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/web_tester.php');
-    require_once(dirname(__FILE__) . '/../simpletest/reporter.php');
+    require_once(dirname(__FILE__) . '/simpletest/web_tester.php');
+    require_once(dirname(__FILE__) . '/simpletest/reporter.php');
 
-    class TestLighting extends WebTestCase{
+    class TestNotify extends WebTestCase{
 
         /* optional constructor to name the test */
 		function __construct() {
@@ -21,7 +22,7 @@
         /* optional test setup */
 		function setUp() {
 			//set precondition
-			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/test/lighting.php');
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/notify.php');
 			/* $this->showRequest(); */
 			/* $this->showHeaders(); */
 			/* $this->showSource(); */
@@ -40,13 +41,16 @@
         /* one or more test functions - name must start with test */
 		function testSomething() {
 			$this->assertResponse(200);
-			$this->assertNoText('<table>');
-			$this->assertText('Lighting');
+			$this->assertNoText('<html>');
+			$this->assertNoText('<body>');
+			$this->assertText('Notification System');
+			$this->assertText('Farm Alert');
+			$this->assertText('This is an alert from your Home Farm Management system');
 		}
 
 	}
 
-$test = new TestLighting();
+$test = new TestNotify();
 $test->run(new HtmlReporter());
 
 ?>
