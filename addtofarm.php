@@ -5,11 +5,12 @@ ini_set('display_errors', 'On');
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu","petleya-db","h4QQvoY9jtkpIVYy","petleya-db");
 if(!$mysqli || $mysqli->connect_errno){
     echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
-    }
+}
+session_start();
+$usr = $_SESSION['usr'];
 if(!($stmt = $mysqli->prepare("SELECT zuser.uid FROM zuser WHERE zuser.username = ?"))){
     echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 }
-$usr = "weckwera";
 if(!($stmt->bind_param("s",$usr))){
     echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 }
