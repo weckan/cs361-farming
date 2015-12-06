@@ -5,9 +5,9 @@
     error_reporting(E_ALL);
 
     require_once('showPasses.php');
-    require_once('../simpletest/simpletest.php');
+    require_once(dirname(__FILE__) . '/simpletest/simpletest.php');
     SimpleTest::prefer(new ShowPasses());
-    require_once(dirname(__FILE__) . '/../simpletest/autorun.php');
+    require_once(dirname(__FILE__) . '/simpletest/autorun.php');
 
     class AllTestsShowPasses extends TestSuite {
 

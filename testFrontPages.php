@@ -5,11 +5,11 @@
     error_reporting(E_ALL);
 
     /* test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/autorun.php');
+    require_once(dirname(__FILE__) . '/simpletest/autorun.php');
 
     /* web page test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/web_tester.php');
-    require_once(dirname(__FILE__) . '/../simpletest/reporter.php');
+    require_once(dirname(__FILE__) . '/simpletest/web_tester.php');
+    require_once(dirname(__FILE__) . '/simpletest/reporter.php');
 
     class TestFrontPages extends WebTestCase{
 

@@ -5,11 +5,11 @@
     error_reporting(E_ALL);
 
     /* test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/autorun.php');
+    require_once(dirname(__FILE__) . '/simpletest/autorun.php');
 
     /* web page test driver */
-    require_once(dirname(__FILE__) . '/../simpletest/web_tester.php');
-    require_once(dirname(__FILE__) . '/../simpletest/reporter.php');
+    require_once(dirname(__FILE__) . '/simpletest/web_tester.php');
+    require_once(dirname(__FILE__) . '/simpletest/reporter.php');
 
     class TestDispense extends WebTestCase{
 
@@ -21,7 +21,7 @@
         /* optional test setup */
 		function setUp() {
 			//set precondition
-			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/test/dispense.php');
+			$this->get('http://web.engr.oregonstate.edu/~ratlifri/farming/dispense.php');
 			/* $this->showRequest(); */
 			/* $this->showHeaders(); */
 			/* $this->showSource(); */
